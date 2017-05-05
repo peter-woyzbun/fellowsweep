@@ -1,0 +1,42 @@
+
+#game-container{
+    margin: auto;
+    padding-top: 175px;
+    text-align: center;
+    width: 100%;
+}
+
+#board-wrapper{
+    display: inline-block;
+    border: 3px double #6a6a6a;
+    padding: 8px;
+}
+
+.game-info{
+    position: absolute;
+    right: 0;
+    top: 50px;
+    padding-right: 24px;
+    padding-top: 24px;
+    font-family: monospace;
+    color: #808080;
+    font-size: 2em;
+}
+
+/*
+ * Game Cells
+ */
+
+.game-row{
+    height: 26px;
+    margin: auto;
+    width: 100%;
+}
+
+.game-cell{
+    width: 26px;
+    height: 26px;
+    font-family: monospace;
+    padding: 1px;
+    float: left;
+}

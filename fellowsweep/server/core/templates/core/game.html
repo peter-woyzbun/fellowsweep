@@ -1,0 +1,112 @@
+{% extends 'core/_base.html' %}
+
+{% block page_head_includes %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "core/game.css" %}"/>
+    <script type="text/javascript" src="{% static "core/js/minesweeper.js" %}"></script>
+{% endblock %}
+
+{% block page_buttons %}
+    <li>
+    <a href="{% url 'core:home' %}">
+                        <button class="btn btn-default">Home</button>
+        </a>
+    </li>
+{% endblock %}
+
+{% block page_content %}
+    <div class="container-fluid">
+
+        <div class="game-info">
+            MINES: <span style="color: #ff0000;">{{ game.num_mines }}</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="game-container">
+                    <div id="board-wrapper">
+                        {% for row in game.cell_state_values %}
+                            <div class="game-row">
+                                {% for cell in row %}
+                                    <div class="game-cell"
+                                         data-x="{{ forloop.parentloop.counter0 }}"
+                                         data-y="{{ forloop.counter0 }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cell-states" hidden>
+
+        <div class="cell-state cell-trigger" data-state="hidden">
+            <img src="{% static "core/images/game_states/hidden.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="0">
+        </div>
+
+
+        <div class="cell-state" data-state="1">
+            <img src="{% static "core/images/game_states/1.png" %}"/>
+        </div>
+
+        <div class="cell-state" data-state="2">
+            <img src="{% static "core/images/game_states/2.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="3">
+            <img src="{% static "core/images/game_states/3.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="4">
+            <img src="{% static "core/images/game_states/4.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="5">
+            <img src="{% static "core/images/game_states/5.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="6">
+            <img src="{% static "core/images/game_states/6.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="7">
+            <img src="{% static "core/images/game_states/7.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="8">
+            <img src="{% static "core/images/game_states/8.png" %}" />
+        </div>
+
+        <div class="cell-state" data-state="-1">
+            <img src="{% static "core/images/game_states/mine.png" %}"  />
+        </div>
+
+    </div>
+
+    <script>
+
+
+        window.onload = function () {
+            setInitialStates('{% url 'core:cell_states' game_id=game.id %}', '{{ csrf_token }}');
+        };
+
+
+        $( '#game-container' ).on( 'click', '.cell-trigger', function () {
+            triggerCell($(this), '{% url 'core:trigger_cell' game_id=game.id %}', '{{ csrf_token }}');
+        });
+
+
+    </script>
+{% endblock %}
