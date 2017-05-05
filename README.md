@@ -11,7 +11,8 @@ activate it, then run
 pip install -e .
 ```
 
-in the directory containing `setup.py`.
+in the directory containing `setup.py`. Then you can use `manage.py` to do whatever you like. The database
+does not need to be initialized (you dont need to run `makemigrations` or anything).
 
 ## System Overview
 
