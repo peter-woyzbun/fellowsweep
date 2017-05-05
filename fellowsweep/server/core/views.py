@@ -144,12 +144,14 @@ class TriggerCell(View):
         if state_updater.game_over:
             game.cell_states = state_updater.updated_cell_states
             game.game_over = True
+            json_data = {'game_over': True,
+                         'updated_states': state_updater.updated_states()}
+            if game.won:
+                json_data['game_won'] = state_updater.game_won
+                game.won = True
             game.save()
-            return JsonResponse({'game_over': True,
-                                 'updated_states': state_updater.updated_states(),
-                                 'game_won': state_updater.game_won})
+            return JsonResponse(json_data)
         else:
-            print(state_updater.updated_cell_states)
             game.cell_states = state_updater.updated_cell_states
             game.save()
             return JsonResponse({'updated_states': state_updater.updated_states()})
