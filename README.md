@@ -1,6 +1,8 @@
 # Fellowsweeper
 
-Django-based Minesweeper game for coding challenge.
+Django-based Minesweeper game for coding challenge. See below for installation instructions and system overview.
+
+![Game Preview](docs/game_preview.png)
 
 ## Installation
 
