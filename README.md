@@ -12,3 +12,6 @@ pip install -e .
 
 in the directory containing `setup.py`.
 
+## System Overview
+
+![System Diagram](docs/diagram.png)
