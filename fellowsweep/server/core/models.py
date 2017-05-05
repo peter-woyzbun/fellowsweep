@@ -37,6 +37,7 @@ class MinesweeperGame(models.Model):
 
     @property
     def data(self):
+        """ Return a dict containing data for calculating aggregate player performance metrics. """
         won = 1 if self.won else 0
         data_dict = {'num_mines': self.num_mines,
                      'user': self.user.username,
