@@ -4,7 +4,8 @@ Django-based Minesweeper game for coding challenge.
 
 ## Installation
 
-To install, clone the repository locally, create a `virtualenv` or `conda` environment, activate it, then run
+To install, clone the repository locally, create a `virtualenv` or `conda` environment (Python 3.6),
+activate it, then run
 
 ```
 pip install -e .
